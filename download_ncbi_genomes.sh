@@ -11,11 +11,11 @@ export NCBI_API_KEY=9f29b62a5d8212263424327b94284d57a407
 # The output directory to write metadata files and download genomes.
 output_dir="/Users/kevin.muirhead/Desktop/AAFC_Bioinformatics/download_ncbi_genomes"
 
-# The date of the refseq database was downloaded.
-date=$(date +"%Y-%m-%d")
-
 # Create the output directory if it does not exist.
 mkdir -p $output_dir
+
+# The date of the refseq database was downloaded.
+date=$(date +"%Y-%m-%d")
 
 # The genome metadata output file that is downloaded from NCBI edirect using a query.
 genome_metadata_outfile="${output_dir}/ncbi_refseq_genome_metadata.tsv"
@@ -34,9 +34,9 @@ mkdir -p $genome_database_dir
 ##esearch -db assembly -query '("Bacteria"[Organism] OR "Archaea"[Organism]) AND (latest[filter] AND "complete genome"[filter] AND all[filter] NOT anomalous[filter] AND "taxonomy check ok"[filter])' | esummary | xtract -pattern DocumentSummary -element  AssemblyAccession,Organism,Taxid,BioSampleAccn,AssemblyStatus,FtpPath_GenBank,FtpPath_RefSeq -group GB_BioProjects -block Bioproj -element BioprojectAccn -group RS_BioProjects -block Bioproj -element BioprojectAccn > $genome_metadata_outfile
 
 # Latest RefSeq 35,210.
-#echo "esearch -db assembly -query '("Bacteria"[Organism]) OR ("Archaea"[Organism]) AND ("latest refseq"[filter]) AND "complete genome"[filter] NOT anomalous[filter] AND "taxonomy check ok"[filter])' | esummary | xtract -pattern DocumentSummary -def "NA" -element AssemblyAccession,Organism,Taxid,BioSampleAccn,AssemblyStatus,FtpPath_GenBank,FtpPath_RefSeq -group GB_BioProjects -block Bioproj -def "NA" -element BioprojectAccn -group RS_BioProjects -block Bioproj -def "NA" -element BioprojectAccn > $genome_metadata_outfile"
+echo "esearch -db assembly -query '("Bacteria"[Organism]) OR ("Archaea"[Organism]) AND ("latest refseq"[filter]) AND "complete genome"[filter] NOT anomalous[filter] AND "taxonomy check ok"[filter])' | esummary | xtract -pattern DocumentSummary -def "NA" -element AssemblyAccession,Organism,Taxid,BioSampleAccn,AssemblyStatus,FtpPath_GenBank,FtpPath_RefSeq -group GB_BioProjects -block Bioproj -def "NA" -element BioprojectAccn -group RS_BioProjects -block Bioproj -def "NA" -element BioprojectAccn > $genome_metadata_outfile"
 
-#esearch -db assembly -query '("Bacteria"[Organism]) OR ("Archaea"[Organism]) AND ("latest refseq"[filter]) AND "complete genome"[filter] NOT anomalous[filter] AND "taxonomy check ok"[filter])' | esummary | xtract -pattern DocumentSummary -def "NA" -element AssemblyAccession,AssemblyName,Organism,Taxid,BioSampleAccn,AssemblyStatus,FtpPath_GenBank,FtpPath_RefSeq -group GB_BioProjects -block Bioproj -def "NA" -element BioprojectAccn -group RS_BioProjects -block Bioproj -def "NA" -element BioprojectAccn > $genome_metadata_outfile
+esearch -db assembly -query '("Bacteria"[Organism]) OR ("Archaea"[Organism]) AND ("latest refseq"[filter]) AND "complete genome"[filter] NOT anomalous[filter] AND "taxonomy check ok"[filter])' | esummary | xtract -pattern DocumentSummary -def "NA" -element AssemblyAccession,AssemblyName,Organism,Taxid,BioSampleAccn,AssemblyStatus,FtpPath_GenBank,FtpPath_RefSeq -group GB_BioProjects -block Bioproj -def "NA" -element BioprojectAccn -group RS_BioProjects -block Bioproj -def "NA" -element BioprojectAccn > $genome_metadata_outfile
 
 filename=$(basename $genome_metadata_outfile | sed 's/\.tsv//g')
 
