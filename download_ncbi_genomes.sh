@@ -18,7 +18,7 @@ date=$(date +"%Y-%m-%d")
 mkdir -p $output_dir
 
 # The genome metadata output file that is downloaded from NCBI edirect using a query.
-genome_metadata_outfile="${output_dir}/ncbi_genome_metadata_ref_seq.tsv"
+genome_metadata_outfile="${output_dir}/ncbi_refseq_genome_metadata.tsv"
 
 # The genome assembly output directory.
 #genome_assembly_dir="${output_dir}/genome_assemblies"
