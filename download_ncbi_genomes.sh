@@ -8,11 +8,11 @@ conda activate entrez_direct_env
 # Exporting NCBI_API_KEY for use with edirect utilites.
 export NCBI_API_KEY=9f29b62a5d8212263424327b94284d57a407
 
-# The date of the refseq database was downloaded.
-date=$(date +"%Y-%m-%d")
-
 # The output directory to write metadata files and download genomes.
 output_dir="/Users/kevin.muirhead/Desktop/AAFC_Bioinformatics/download_ncbi_genomes"
+
+# The date of the refseq database was downloaded.
+date=$(date +"%Y-%m-%d")
 
 # Create the output directory if it does not exist.
 mkdir -p $output_dir
